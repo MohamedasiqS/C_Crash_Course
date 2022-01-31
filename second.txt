@@ -1,0 +1,1 @@
+It is example of delete file using "rm -f" command
