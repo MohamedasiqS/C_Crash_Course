@@ -1,0 +1,23 @@
+#include<stdio.h>
+typedef struct program
+{
+	int data;
+}stu;
+enum boolean
+{
+	start,
+	one,
+	end =7
+};
+int main()
+{
+	int i;
+	stu a;
+	a.data =0;
+	for(i=start;i<end;i++)
+	{
+	   a.data += i;
+	}
+	printf("Sum :%d\n",a.data);
+return 0;
+}

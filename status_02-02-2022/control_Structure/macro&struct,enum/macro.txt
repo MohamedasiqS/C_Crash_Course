@@ -1,0 +1,28 @@
+#include<stdio.h>
+#define ch char
+#define OS 1
+int main()
+{
+ch character = 'a';
+printf("%c\n",character);
+
+
+#ifndef OS
+  #error printf("please define OS\n");
+#endif
+#if OS == 1
+	printf("Android OS\n");
+#elif OS ==2
+	printf("Windows OS\n");
+#elif OS ==3
+	printf("Linux OS\n");
+#else
+      printf("Invalid Number");
+#endif
+printf("%d",__LINE__);
+#line 333
+printf("hello1\n");
+printf("hello22\n");
+printf("%d",__LINE__);
+return 0;
+}
