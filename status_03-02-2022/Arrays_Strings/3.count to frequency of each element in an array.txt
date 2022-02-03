@@ -1,0 +1,23 @@
+#include<stdio.h>
+int main()
+{
+    int arr[] = {10,20,10,30,40,50,20,60,50,30,30};
+    int i,j,size,flag,count;
+    size = sizeof(arr)/sizeof(arr[0]);
+    for(i=0;i<size;i++)
+    {
+        flag =0;
+        count =1;
+        for(j=i+1;j<size;j++)
+        {
+            if(arr[i]==arr[j])
+            {
+                count++;
+                flag =1;
+            }
+        }
+        if(flag==1)
+            printf("%d is %d times repeated\n ",arr[i],count);
+    }
+    return 0;
+}

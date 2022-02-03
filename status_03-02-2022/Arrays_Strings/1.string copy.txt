@@ -1,0 +1,19 @@
+#include <stdio.h>
+char* mystrcpy(char *src,char *dest)
+{
+    int i=0;
+    while(src[i]!='\0')
+    {
+        dest[i]=src[i];
+        i++;
+    }
+    dest[i]='\0';
+    return dest;
+}
+int main()
+{
+   char src[10]="hello",dest[10];
+    mystrcpy(src,dest);
+    printf("Dest : %s\n",dest);
+    return 0;
+}
