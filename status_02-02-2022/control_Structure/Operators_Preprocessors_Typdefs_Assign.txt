@@ -25,7 +25,7 @@ ANSWER : Compilation error
 
 5) int k=1;
    printf("%d==1 is ""%s\n",k,k==1?"TRUE":"FALSE");
-ANSWER : 
+ANSWER : 1==1 is TRUE,
 
 6) int i=5;
    i=i++ - --i + ++i;
@@ -62,18 +62,15 @@ ANSWER:
     z=y++*x++|y--;
     printf("%d\n",z);
 
-ANSWER : z = 3 * 2 | 2;
+ANSWER : z = 3 * 2 | 4;
+	  z= 6|4
 Final Output : 
 
 11) int a=5,b=6,c=7,d;
     d=a&=b&=c&&a;
     printf("%d\n",d);
 ANSWER:
-	a&=1// a=a&1//a=5&1
-	c&&a == 7&&5 =1
-	b&=1//b=b&1,b=1
 	
-	Final Output : 1
 
 12) int i=10;
     i=(10<10)?(10>=10)?(10<=10)?1:2:3:4;
@@ -93,7 +90,12 @@ ANSWER :
 14) printf("%x\n",-1>>4);
     printf("%x\n",-1<<4);
 ANSWER:
+ 	-1 = ffff ffff
+	-1<<4 = ffff fff0
+	-1>>4 = 
+Final Output :
 	
+	ffff fff0
 15) int x=7;
     x=(x<<=x%2);
     printf("%d\n",x);
@@ -132,11 +134,7 @@ ANSWER:
     c = 2.5
     printf("%d %d",sizeof(a) + sizeof((++b) *c, b);  
 ANSWER : 
-	sizeof(a) - 4
-	sizeof(b) - 4
-	4+4*2.5
-	4+8
-                  Final Output : 12,-4
+	
 20) int i=5;
     i=i++ - i
     printf("%d",i)
@@ -157,6 +155,7 @@ int main()
 }
 ANSWER:
 	preprocessor works
+It just replace the code.
 
 2) What will be the output of the C program?
 #include<stdio.h>
@@ -168,7 +167,7 @@ int main()
 	return 0;
 }
 ANSWER:
-	infinity loop like while(1);
+	infinity because loop replace while(1);
 
 3) What will be the output of the C program?
 #include<stdio.h>
@@ -193,8 +192,13 @@ int main()
 	return 0;
 }
 ANSWER:
-	289 20
-Because in macro value doesn't modification occurs
+	16 25
+  z = 5*5;//z=25
+	a=a-3;//a=6-3//a=3;
+	sqa(3);
+	++a * ++a;//sqa(a) = 16
+Final Output : 16 25
+
 
 5) What will be the output of the C program?
 #include<stdio.h>                      
@@ -209,6 +213,7 @@ ANSWER:
 	1+2*1+2*1+2
 	1+2+2+2
 	Final Output : 7
+
 6) What will be the output of the C program?
 #include<stdio.h>
 #define a =
@@ -234,7 +239,7 @@ int main()
 ANSWER:
 	2+2*1-1
 	2+2-1
-	Final Output 3
+	Final Output: 3
 
 8) What will be the output of the C program?
 #include<stdio.h>
@@ -246,6 +251,7 @@ int main()
 }
 ANSWER:
 	It prints today data
+
 9) What will be the output of the C program?
 #include<stdio.h>
 int main()
@@ -288,7 +294,7 @@ int main()
 	return 0;
 }
 ANSWER:
-	%s C preprocessor,%s C preprocessor
+	%s C preprocessor %s C preprocessor
 
 13) What will be the output of the C program?
 #include<stdio.h>
@@ -302,6 +308,7 @@ ANSWER:
 	macro25 = 47	
 	#n converts to string
 	macro##n it does string concaenation
+
 14) What will be the output of the C program?
 #include<stdio.h>
 #include<string.h>
@@ -314,6 +321,13 @@ int main()
 	printf("%d", MACRO(num));
 	return 0;
 }
+OUTPUT:
+	MACRO(ptr)
+	    ++ptr;//pointer value increased & it point next character
+	MACRO(num)
+	    ++num;//num=12;after ++num,num=13
+Final Output:
+	reprocessor 13
 
 15) What will be the output of the C program?
 #include<stdio.h>
@@ -324,7 +338,9 @@ int main()
 	printf("%d",i);
 	return 0;
 }
-Answer: 	20
+Answer: 	20 
+	it show warning for redeclaration of "i" variable.
+
 16) What will be the output of the C program?
 #include<stdio.h>
 #define clrscr() 50
@@ -337,7 +353,8 @@ int main()
 ANSWER:
 	50
 	first clrscr is clear screen function .
-	In printf clrscr is macro
+	In printf clrscr is macro So it print 50.
+
 17) What will be the output of the C program?
 #include<stdio.h>
 #define int char
@@ -349,6 +366,7 @@ main()
 ANSWER:
 	1
 	It prints character size
+
 18) Write programs to understand the usage of below preprocessor directives.
 #include, #if, #ifdef, #ifndef, #else, #elif, #endif, #define, #undef, #line, #error, and #pragma
 
@@ -391,12 +409,15 @@ ptr p1, p2;
 ANSWER:
 	Integer pointer
 
+because int* p1,p2 is replaced by ptr p1,p2.
+
 2)  In the following code what is 'P'?
 typedef char *charp;
 const charp P;
 
 ANSWER:
 	constant character
+because const char* p replace const char P;
 
 3) What is x in the following program?
 #include<stdio.h>
@@ -412,7 +433,7 @@ ANSWER:
 4) What is apfArithmatics in the below statement?
 typedef int (*apfArithmatics[3])(int,int); 
 ANSWER:
-	arrays of functio pointer
+	arrays of function pointer
 
 5) What is pf in the below statement?
 typedef int (*pf)(int);
@@ -428,6 +449,13 @@ typedef fpfpc *pfpfpc;
 pfpfpc a[N];
 
 ANSWER:
+
+typedef char *pc;  ----- character pointer
+typedef pc fpc();  ------  char* fpc();//function declaration 
+typedef fpc *pfpc;
+typedef pfpc fpfpc();
+typedef fpfpc *pfpfpc;
+pfpfpc a[N];
 
 7) Write few programs using typedef on structures and enums.
 
