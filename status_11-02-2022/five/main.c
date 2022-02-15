@@ -17,15 +17,17 @@ int main()
         }
 	ch = fgetc(fp);
 	ch1= fgetc(fp1);
-	while(ch!=EOF && ch1!=EOF)
+	while(ch!=EOF && ch1!=EOF || ch!=EOF || ch1!=EOF)
 	{
+		if(ch!=ch1)
+                {
+                         a=0;
+			 break;
+                }
+
 	ch = fgetc(fp);
         ch1= fgetc(fp1);
 	}
-	if(ch!=ch1)
-                {
-                         a=0;
-                }
 	if(a==0)
 		printf("File 1 & File 2 not same\n");
 	else
