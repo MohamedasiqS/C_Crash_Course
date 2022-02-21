@@ -4,6 +4,8 @@ int main() {
     int n1, n2;
     printf("Enter two positive integers: ");
     scanf("%d %d", &n1, &n2);
+    if(n1>n2)
+	    n1 = (n1*n2)/(n2=n1);
     printf("G.C.D of %d and %d is %d.", n1, n2, hcf(n1, n2));
     return 0;
 }
