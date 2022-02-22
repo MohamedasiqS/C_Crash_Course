@@ -7,7 +7,7 @@ int main()
     for(i=0;i<n;i++)
     {
         for(j=0;j<n-i;j++)
-           printf(" ");
+            printf(" ");
           j=0;
           while(j<=i)
           {
@@ -16,7 +16,6 @@ int main()
           }
           printf("\n");
     }
-
     return 0;
 }
 
