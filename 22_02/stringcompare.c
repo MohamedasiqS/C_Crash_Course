@@ -3,16 +3,21 @@
 int mystrcmp(const char *str1,const char *str2)
 {
 	int i=0;
-	while(*(str1+i)==*(str2+i))
+	while((*(str1+i)==*(str2+i)) && *(str1+i) != '\0' && *(str2+i)!='\0')
 	{
 		i++;
 	}
-	return *(str1+i)-*(str2+i);
+	if (0 < (*(str1+i)-*(str2+i)))
+		return -1;
+	else if (0 > (*(str1+i)-*(str2+i)))
+		return 1;
+	else
+		return 0;
 }
 int main(void)
 {
-	char str1[SIZE]="Hello",str2[SIZE]="Aworld";
-	int (*fptr)(char*,char*);
+	char str1[SIZE]="Hello",str2[SIZE]="Hello";
+	int (*fptr)(const char*,const char*);
 	int ret;
 	fptr=mystrcmp;
 	ret=fptr(str1,str2);
